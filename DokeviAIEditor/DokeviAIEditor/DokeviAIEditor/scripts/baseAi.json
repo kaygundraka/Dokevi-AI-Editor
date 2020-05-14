@@ -1,0 +1,1 @@
+{"ai":"baseAi","behaviourTree":{"type":"sequence","child":[{"type":"decoratorIf","name":"Search","child":{"type":"execution","name":"Follow"},"const":[{"farDist":10.0},{"nearDist":2.0}]},{"type":"decoratorIf","name":"CanAttack","child":{"type":"execution","name":"Attack"},"const":[{"farDist":2.0},{"nearDist":0.0}]}]}}
