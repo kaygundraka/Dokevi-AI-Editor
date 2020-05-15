@@ -6,6 +6,8 @@
 ![language](https://img.shields.io/badge/language-c%2B%2B-green.svg)
 ![platform](https://img.shields.io/badge/platform-windows-brightgreen.svg)
 
+https://github.com/kaygundraka/Dokevi-AI-Editor/blob/master/ScreenShot.PNG
+
 Need to write somethings.
 
 This project include rapid-json library. (BSD License Open Source Library)
