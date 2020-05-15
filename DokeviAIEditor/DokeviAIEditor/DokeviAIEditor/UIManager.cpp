@@ -29,9 +29,9 @@ int UIManager::GetWindowHeight() const
 	return -1;
 }
 
-void UIManager::SetWindowsHandle(HWND hHandle) 
+void UIManager::SetWindowsHandle(HWND inHandle)
 { 
-	_windowHandle = hHandle; 
+	_windowHandle = inHandle;
 }
 
 void UIManager::DrawFolderView()
@@ -57,7 +57,10 @@ void UIManager::DrawFolderView()
 	{
 		ImGui::SetNextTreeNodeOpen(true);
 
-		static char findFileName[32] = "";
+		static char selectFileName[32] = "";
+
+		int i = 0;
+		static int clickedItem = 0;
 
 		if (ImGui::TreeNode("Files"))
 		{
@@ -69,11 +72,25 @@ void UIManager::DrawFolderView()
 				{
 					if (strcmp(fd.name, ".") != 0 && strcmp(fd.name, "..") != 0)
 					{
-						if (ImGui::TreeNode(fd.name))
+						char treeName[128] = "- ";
+						strcat_s(treeName, fd.name);
+
+						if (i == clickedItem)
 						{
-							strcpy_s(findFileName, fd.name);
-							ImGui::TreePop();
+							ImGui::TextColored(ImVec4(1.0f, 1.0f, 0, 1.0f), treeName);
 						}
+						else
+						{
+							ImGui::Text(treeName);
+						}
+	
+						if (ImGui::IsItemClicked())
+						{
+							clickedItem = i;
+							strcpy_s(selectFileName, fd.name);
+						}
+
+						i++;
 					}
 
 					result = _findnext(handle, &fd);
@@ -85,29 +102,62 @@ void UIManager::DrawFolderView()
 
 		ImGui::Separator();
 
-		ImGui::InputText("File", findFileName, 32);
+		ImGui::InputText("File", selectFileName, 32);
 
 		ImGui::SetNextItemWidth(GetWindowWidth() - 315);
 
 		if (ImGui::Button("Open File", ImVec2(280, 30)))
 		{
 			AIAgent* newAgent = new AIAgent();
-			newAgent->_fileName = findFileName;
+			newAgent->_fileName = selectFileName;
 			newAgent->LoadDataFromJsonFile();
 			_curEditedAI = newAgent;
 		}
 
 		if (ImGui::Button("New File", ImVec2(280, 30)))
 		{
-			AIAgent* newAgent = new AIAgent();
-			newAgent->SetDefaultState();
-			newAgent->_fileName = findFileName;
-			_curEditedAI = newAgent;
+			ImGui::OpenPopup("New File");
+		}
+
+		ImGui::SetNextWindowPos(ImVec2(GetWindowWidth() / 2 - 200, GetWindowHeight() / 2 - 100));
+
+		if (ImGui::BeginPopup("New File"))
+		{
+			static char newFileName[128] = "";
+
+			ImGui::TextColored(ImVec4(1.0f, 0.3f, 0.3f, 1.0f), "Create New AI File");
+			ImGui::Separator();
+		
+			ImGui::InputText("File Name", newFileName, 128);
+			ImGui::Separator();
+
+			if (ImGui::Button("Create") && strcmp(newFileName, "") != 0)
+			{
+				AIAgent* newAgent = new AIAgent();
+				newAgent->SetDefaultState();
+
+				std::string fileName = newFileName;
+				newAgent->_fileName = fileName + ".json";
+				_curEditedAI = newAgent;
+			}
+
+			ImGui::SameLine();
+
+			if (ImGui::Button("Cancle"))
+			{
+				ImGui::CloseCurrentPopup();
+			}
+
+			ImGui::EndPopup();
 		}
 
 		if (ImGui::Button("Delete File", ImVec2(280, 30)))
 		{
-			if (_curEditedAI != nullptr && _curEditedAI->_fileName == findFileName)
+			std::string deleteFile = ".\\scripts\\";
+			deleteFile += selectFileName;
+			remove(deleteFile.c_str());
+
+			if (_curEditedAI != nullptr && _curEditedAI->_fileName == selectFileName)
 			{
 				delete _curEditedAI;
 				_curEditedAI = nullptr;
@@ -126,7 +176,7 @@ void UIManager::DrawNodeTree(AINode* inNode)
 
 	if (ImGui::TreeNode(inNode->title))
 	{
-		if (ImGui::IsItemHovered())
+		if (ImGui::IsItemClicked())
 		{
 			_selectNode = inNode;
 		}
@@ -225,8 +275,14 @@ void UIManager::DrawAIInstance(AIAgent* inAIAgent)
 
 		if (ImGui::ButtonEx("End", ImVec2(164, 20)))
 		{
-
+			delete _curEditedAI;
+			_curEditedAI = nullptr;
+			
+			ImGui::EndChildFrame();
+			ImGui::End();
+			return;
 		}
+
 		ImGui::EndChildFrame();
 
 		ImNodes::BeginCanvas(&canvas);
@@ -361,6 +417,7 @@ void UIManager::DrawAIInstance(AIAgent* inAIAgent)
 
 			if (ImGui::IsAnyMouseDown() && !ImGui::IsWindowHovered())
 				ImGui::CloseCurrentPopup();
+
 			ImGui::EndPopup();
 		}
 
@@ -376,7 +433,8 @@ void UIManager::DrawMainMenuBar()
 		if (ImGui::BeginMenu("System"))
 		{
 			if (ImGui::MenuItem("About DokeviAIEditor", "CTRL+I")) {}
-			if (ImGui::MenuItem("Exit", "CTRL+E")) {}
+			if (ImGui::MenuItem("Exit", "CTRL+E")) 
+			{}
 
 			ImGui::EndMenu();
 		}

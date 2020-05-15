@@ -378,6 +378,11 @@ void AIAgent::ParseAINodes(AINode* inParent, rapidjson::Value& inJsonObject, ImV
 
 void AINodeToJsonObject(Document& inDocument, Value& inObject, AINode* inAINode, Document::AllocatorType& inAllocator)
 {
+	if (inAINode == nullptr)
+	{
+		return;
+	}
+
 	Value type;
 	type.SetString(inAINode->title, strlen(inAINode->title));
 	inObject.AddMember("type", type, inAllocator);

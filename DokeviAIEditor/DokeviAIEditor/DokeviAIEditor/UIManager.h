@@ -29,7 +29,7 @@ namespace DokeviAIEditor
 	public:
 		UIManager() : _curEditedAI(nullptr) {}
 
-		void SetWindowsHandle(HWND hHandle);
+		void SetWindowsHandle(HWND inHandle);
 		void Render();
 	};
 }
