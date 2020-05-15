@@ -1,6 +1,6 @@
 # Dokevi-AI-Editor
 
-> The Dokevi-AI-Editor is helps you make the Dokevi-AI script easier.
+> The Dokevi-AI-Editor helps you to make the Dokevi-AI script easier.
 
 ![version](https://img.shields.io/badge/alpha-v1.0.0-blue.svg)
 ![language](https://img.shields.io/badge/language-c%2B%2B-green.svg)
