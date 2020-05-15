@@ -23,7 +23,7 @@ Need to write somethings.
   
 ## Release History
 
-* v0.0.1
+* v1.0.0
     * Alpha: provides basic function.
    
 
