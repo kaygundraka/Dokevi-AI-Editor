@@ -202,7 +202,7 @@ void AIAgent::ParseValues(AINode* inParent, ImVec2 inAddPos, std::map<std::strin
 
 	for (auto item : inDoubleArray)
 	{
-		AINode*	newNode = MakeNewNode(inParent, "doubleValue", NodeSlotDoubleValue, inAddPos + ImVec2(newNodeDistanceX, (++i) * newNodeDistanceY));
+		AINode*	newNode = MakeNewNode(inParent, "doubleValue", NodeSlotDoubleValue, inAddPos + ImVec2((float)newNodeDistanceX, (++i) * (float)newNodeDistanceY));
 		newNode->name = item.first;
 		newNode->doubleData = item.second;
 		_aiNodes.push_back(newNode);
@@ -212,7 +212,7 @@ void AIAgent::ParseValues(AINode* inParent, ImVec2 inAddPos, std::map<std::strin
 
 	for (auto item : inStrArray)
 	{
-		AINode*	newNode = MakeNewNode(inParent, "stringValue", NodeSlotStringValue, inAddPos + ImVec2(newNodeDistanceX, (++i) * newNodeDistanceY));
+		AINode*	newNode = MakeNewNode(inParent, "stringValue", NodeSlotStringValue, inAddPos + ImVec2((float)newNodeDistanceX, (++i) * (float)newNodeDistanceY));
 		newNode->name = item.first;
 		newNode->stringData = item.second;
 		_aiNodes.push_back(newNode);
@@ -264,12 +264,12 @@ void AIAgent::ParseAINodes(AINode* inParent, rapidjson::Value& inJsonObject, ImV
 
 		for (unsigned int i = 0; i < childArray.Size(); i++)
 		{
-			ParseAINodes(newNode, childArray[i], ImVec2(newNodeDistanceX, (i + 1)* newNodeDistanceY));
+			ParseAINodes(newNode, childArray[i], ImVec2((float)newNodeDistanceX, (i + 1)* (float)newNodeDistanceY));
 		}
 	}
 	else if (name == "decoratorWhile")
 	{
-		ParseAINodes(newNode, inJsonObject.FindMember("child")->value, ImVec2(newNodeDistanceX * 2, 0));
+		ParseAINodes(newNode, inJsonObject.FindMember("child")->value, ImVec2((float)newNodeDistanceX * 2, 0));
 
 		if (inJsonObject.HasMember("const"))
 		{
@@ -367,7 +367,7 @@ void AIAgent::ParseAINodes(AINode* inParent, rapidjson::Value& inJsonObject, ImV
 
 		for (unsigned int i = 0; i < childArray.Size(); i++)
 		{
-			ParseAINodes(newNode, childArray[i], ImVec2(newNodeDistanceX, (i + 1) * newNodeDistanceY));
+			ParseAINodes(newNode, childArray[i], ImVec2((float)newNodeDistanceX, (i + 1) * (float)newNodeDistanceY));
 		}
 	}
 	else
@@ -495,7 +495,7 @@ void AIAgent::SaveDataToJsonFIle()
 	aiDocument.SetObject();
 
 	std::string aiName = _fileName;
-	int subStrPos = aiName.rfind(".json");
+	int subStrPos = (int)aiName.rfind(".json");
 	aiName = aiName.substr(0, subStrPos);
 
 	Value objectName;
