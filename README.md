@@ -6,7 +6,7 @@
 ![language](https://img.shields.io/badge/language-c%2B%2B-green.svg)
 ![platform](https://img.shields.io/badge/platform-windows-brightgreen.svg)
 
-The Dokevi-AI-Editor is made on windows platform by DirectX9. The Dokevi-AI-Editor provides function is visual scripting. It helps to understand ai-behaviour eaiser. 
+The Dokevi-AI-Editor provides function is visual scripting. It helps to understand ai-behaviour eaiser. You can run the Dokevi-AI-Editor on windows platform by DirectX9.
 
 Thie project is alpha-version. It will be gradually upgraded to be more useful.
 
