@@ -17,8 +17,7 @@ https://github.com/kaygundraka/Dokevi-AI
 
 The Dokevi-AI-Editor uses some opensource-librarys.
 
-This project include rapid-json library. (BSD License Open Source Library)
-Also, This porject include Imgui and ImNodes. (MIT License Open Source Library)
+This project include rapid-json library(BSD License Open Source Library). Also, This porject include Imgui and ImNodes(MIT License Open Source Library).
 
 https://github.com/Tencent/rapidjson
 https://github.com/ocornut/imgui
