@@ -26,7 +26,7 @@ https://github.com/Nelarius/imnodes
 We provide this project by two way. The first way is Visual Studio Project, And then the second way is release file.
 You can just run exe file.
 
->> You need to create a Script folder in the same folder as the exe file.
+> You need to create a Script folder in the same folder as the exe file.
 
 ## To Do
 
