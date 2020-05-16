@@ -13,15 +13,15 @@ Thie project is alpha-version. It will be gradually upgraded to be more useful.
 ![screenshot](https://github.com/kaygundraka/Dokevi-AI-Editor/blob/master/ScreenShot.PNG)
 
 You can run ai-script in your program by Dokevi-AI library.
-https://github.com/kaygundraka/Dokevi-AI
+* https://github.com/kaygundraka/Dokevi-AI
 
 The Dokevi-AI-Editor uses some opensource-librarys.
 
 This project include rapid-json library(BSD License Open Source Library). Also, This porject include Imgui and ImNodes(MIT License Open Source Library).
 
-https://github.com/Tencent/rapidjson
-https://github.com/ocornut/imgui
-https://github.com/Nelarius/imnodes
+* https://github.com/Tencent/rapidjson
+* https://github.com/ocornut/imgui
+* https://github.com/Nelarius/imnodes
 
 ## Installation
 
