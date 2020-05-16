@@ -6,20 +6,34 @@
 ![language](https://img.shields.io/badge/language-c%2B%2B-green.svg)
 ![platform](https://img.shields.io/badge/platform-windows-brightgreen.svg)
 
+The Dokevi-AI-Editor is made on windows platform by DirectX9. The Dokevi-AI-Editor provides function is visual scripting. It helps to understand ai-behaviour eaiser. 
+
+Thie project is alpha-version. It will be gradually upgraded to be more useful.
+
 ![screenshot](https://github.com/kaygundraka/Dokevi-AI-Editor/blob/master/ScreenShot.PNG)
 
-Need to write somethings.
+The Dokevi-AI-Editor uses some opensource-librarys.
 
 This project include rapid-json library. (BSD License Open Source Library)
 https://github.com/Tencent/rapidjson
 
+Also, This porject include Imgui and ImNodes. (MIT License Open Source Library)
+https://github.com/ocornut/imgui
+https://github.com/Nelarius/imnodes
+
 ## Installation
 
-Need to write somethings.
+We provide this project by two way. The first way is Visual Studio Project, And then the second way is release file.
+You can just run exe file.
+
+>> You need to create a Script folder in the same folder as the exe file.
 
 ## To Do
 
-Need to write somethings.
+- Upgrade File Editing Functions. Undo, Copy, ... etc
+- Adding to inherite AI from parents.
+- Func, Value Editing Functions.
+- ...
   
 ## Release History
 
