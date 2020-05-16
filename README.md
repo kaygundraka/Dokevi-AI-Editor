@@ -18,11 +18,11 @@ You can run ai-script in your program by Dokevi-AI library.
 The Dokevi-AI-Editor uses some opensource-librarys.
 
 This project include rapid-json library. (BSD License Open Source Library)
-https://github.com/Tencent/rapidjson
+> https://github.com/Tencent/rapidjson
 
 Also, This porject include Imgui and ImNodes. (MIT License Open Source Library)
-https://github.com/ocornut/imgui
-https://github.com/Nelarius/imnodes
+> https://github.com/ocornut/imgui
+> https://github.com/Nelarius/imnodes
 
 ## Installation
 
